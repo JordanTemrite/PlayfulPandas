@@ -91,8 +91,8 @@ CHANGES ---->
 	for (uint256 i = 0; i < _count; i++) {
             uint id = _tokenIdTracker.current().add(1);
             _safeMint(msg.sender, id);
+	    emit CreatePanda(id);
             _tokenIdTracker.increment();
-            emit CreatePanda(id);
         }
 
 
@@ -107,8 +107,8 @@ CHANGES ---->
 	for (uint256 i = 0; i < _count; i++) {
             uint id = _tokenIdTracker.current().add(1);
             _safeMint(_to, id);
-            _tokenIdTracker.increment();
             emit CreatePanda(id);
+            _tokenIdTracker.increment();
         }
 
 	Removed totalMint() ----> Not required
