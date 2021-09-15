@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
-import "./ERC721Pausable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
 
 contract PlayfulPandas is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pausable, PaymentSplitter {
     using SafeMath for uint256;
@@ -75,8 +75,8 @@ contract PlayfulPandas is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pausa
         for (uint256 i = 0; i < _count; i++) {
             uint id = _tokenIdTracker.current().add(1);
             _safeMint(msg.sender, id);
-            _tokenIdTracker.increment();
             emit CreatePanda(id);
+            _tokenIdTracker.increment();
         }
     }
 
@@ -88,8 +88,8 @@ contract PlayfulPandas is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pausa
         for (uint256 i = 0; i < _count; i++) {
             uint id = _tokenIdTracker.current().add(1);
             _safeMint(_to, id);
-            _tokenIdTracker.increment();
             emit CreatePanda(id);
+            _tokenIdTracker.increment();
         }
     }
 
